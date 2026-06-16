@@ -9,8 +9,8 @@
   },
   "main": "./dist/index.js",
   "scripts": {
-    "build": "tsup src/index.ts --format esm --clean --banner.js '#!/usr/bin/env node'",
-    "dev": "tsup src/index.ts --format esm --watch --banner.js '#!/usr/bin/env node'"
+    "build": "tsup",
+    "dev": "tsup --watch"
   },
   "dependencies": {
     "@methode-kuate/core": "*",
