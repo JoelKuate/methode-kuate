@@ -5,8 +5,8 @@ export const KuateConfigSchema = z.object({
   lang: z.enum(['fr', 'en']),
   method: z.enum(['agile', 'lean', 'pmbok', 'safe', 'okr', 'design-thinking', 'custom']),
   domains: z.array(z.enum(['dev', 'business', 'content', 'education'])).min(1),
-  version: z.string(),
+  version: z.string().min(1),
   agents: z.array(z.string()),
 })
 
-export type KuateConfigInput = z.input<typeof KuateConfigSchema>
+export type KuateConfig = z.infer<typeof KuateConfigSchema>

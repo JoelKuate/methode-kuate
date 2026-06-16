@@ -1,3 +1,5 @@
+export type { KuateConfig } from './config-manager/schema.js'
+
 export type Lang = 'fr' | 'en'
 
 export type MethodologyId =
@@ -12,15 +14,6 @@ export type MethodologyId =
 export type DomainId = 'dev' | 'business' | 'content' | 'education'
 
 export type Phase = 'K' | 'U' | 'A' | 'T' | 'E'
-
-export interface KuateConfig {
-  project: string
-  lang: Lang
-  method: MethodologyId
-  domains: DomainId[]
-  version: string
-  agents: string[]
-}
 
 export interface AgentDefinition {
   id: string
