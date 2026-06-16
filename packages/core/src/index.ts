@@ -2,3 +2,5 @@
 export * from './types.js'
 export * from './config-manager/schema.js'
 export * from './config-manager/index.js'
+export * from './agent-generator/index.js'
+export * from './agent-generator/renderer.js'
