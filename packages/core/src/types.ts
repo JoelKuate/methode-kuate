@@ -1,4 +1,5 @@
 export type { KuateConfig } from './config-manager/schema.js'
+export type { MethodologyDefinition } from './methodology-engine/loader.js'
 
 export type Lang = 'fr' | 'en'
 
@@ -24,18 +25,6 @@ export interface AgentDefinition {
   templateFile: string
   description: string
   descriptionFr: string
-}
-
-export interface MethodologyDefinition {
-  id: MethodologyId
-  name: string
-  nameFr: string
-  agentIds: string[]
-  workflowIds: string[]
-  vocabulary: {
-    en: Record<string, string>
-    fr: Record<string, string>
-  }
 }
 
 export interface GeneratedAgent {

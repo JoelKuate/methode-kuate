@@ -25,8 +25,17 @@ export async function readConfig(cwd: string): Promise<KuateConfig> {
     throw new Error(`Aucun projet KUATE trouvé dans ${cwd}. Lancez kuate init.`)
   }
   const raw = await fs.readFile(configPath, 'utf-8')
-  const parsed = parse(raw)
-  return KuateConfigSchema.parse(parsed)
+  let parsed: unknown
+  try {
+    parsed = parse(raw)
+  } catch (err) {
+    throw new Error(`Config YAML invalide dans ${configPath}: ${(err as Error).message}`)
+  }
+  try {
+    return KuateConfigSchema.parse(parsed)
+  } catch (err) {
+    throw new Error(`Config invalide dans ${configPath}: ${(err as Error).message}`)
+  }
 }
 
 export async function writeConfig(cwd: string, config: KuateConfig): Promise<void> {

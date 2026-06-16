@@ -1,13 +1,16 @@
 import path from 'node:path'
 import fs from 'fs-extra'
 import { renderAgentTemplate } from './renderer.js'
-import type { AgentDefinition, GeneratedAgent, KuateConfig, MethodologyDefinition, Lang } from '../types.js'
+import type { AgentDefinition, GeneratedAgent, KuateConfig, MethodologyDefinition } from '../types.js'
 
 export interface GenerateOptions {
   agent: AgentDefinition
   config: KuateConfig
   methodology: MethodologyDefinition
   templatesDir: string
+}
+
+export interface GenerateAndSaveOptions extends GenerateOptions {
   outputDir: string
 }
 
@@ -24,18 +27,18 @@ export async function generateAgent(options: GenerateOptions): Promise<Generated
     agentName: agent.name,
     agentNameFr: agent.nameFr,
     projectName: config.project,
-    lang: config.lang as Lang,
+    lang: config.lang,
     methodology,
     phase: agent.phase,
     description: agent.description,
     descriptionFr: agent.descriptionFr,
   })
 
-  return { id: agent.id, prompt, lang: config.lang as Lang }
+  return { id: agent.id, prompt, lang: config.lang }
 }
 
 export async function generateAndSaveAgent(
-  options: GenerateOptions
+  options: GenerateAndSaveOptions
 ): Promise<GeneratedAgent> {
   const generated = await generateAgent(options)
   const outputPath = path.join(options.outputDir, `${generated.id}.md`)

@@ -16,7 +16,7 @@ export function renderAgentTemplate(
   templateSource: string,
   context: AgentTemplateContext
 ): string {
-  const template = Handlebars.compile(templateSource, { noEscape: true })
+  const template = Handlebars.compile(templateSource)
 
   const methodologyName =
     context.lang === 'fr'
