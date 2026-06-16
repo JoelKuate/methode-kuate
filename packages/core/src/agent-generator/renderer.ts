@@ -1,6 +1,8 @@
 import Handlebars from 'handlebars'
 import type { Lang, MethodologyDefinition } from '../types.js'
 
+Handlebars.registerHelper('eq', (a: unknown, b: unknown) => a === b)
+
 export interface AgentTemplateContext {
   agentName: string
   agentNameFr: string
