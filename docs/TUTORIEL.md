@@ -461,4 +461,5 @@ Vous utilisez une ancienne version du build. Relancez `npm run build` depuis la 
 
 ---
 
-**Joel Parfait — Methode KUATE v1.0.0 — 2026**
+**KUATE JOEL PARFAIT — Methode KUATE v1.0.0 — 2026**  
+[linkedin.com/in/joelparfaitkuate](https://www.linkedin.com/in/joelparfaitkuate/)

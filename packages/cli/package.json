@@ -13,12 +13,12 @@
     "dev": "tsup --watch"
   },
   "keywords": ["kuate", "ai-agents", "methodology", "cli", "agile", "pmbok", "lean"],
-  "author": "Joel Parfait <joelparfait237@gmail.com>",
-  "license": "MIT",
-  "homepage": "https://github.com/methode-kuate/methode-kuate",
+  "author": "KUATE JOEL PARFAIT <joelparfait237@gmail.com> (https://www.linkedin.com/in/joelparfaitkuate/)",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://github.com/JoelKuate/methode-kuate",
   "repository": {
     "type": "git",
-    "url": "https://github.com/methode-kuate/methode-kuate.git"
+    "url": "https://github.com/JoelKuate/methode-kuate.git"
   },
   "files": ["dist", "src"],
   "dependencies": {

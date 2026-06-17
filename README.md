@@ -2,8 +2,8 @@
 
 **CLI d'orchestration d'agents IA pour equipes structurees**
 
-Auteur : Joel Parfait  
-Licence : MIT  
+Auteur : KUATE JOEL PARFAIT — [LinkedIn](https://www.linkedin.com/in/joelparfaitkuate/)  
+Licence : Usage personnel non commercial  
 Version : 1.0.0
 
 ---
@@ -311,4 +311,9 @@ Les contributions sont bienvenues. Pour ajouter une nouvelle langue, un nouvel a
 
 ## Licence
 
-MIT — Joel Parfait, 2026
+Usage personnel non commercial — KUATE JOEL PARFAIT, 2026
+
+Toute utilisation commerciale est interdite sans autorisation ecrite de l'auteur.  
+Contact et demandes : [linkedin.com/in/joelparfaitkuate](https://www.linkedin.com/in/joelparfaitkuate/)
+
+Voir le fichier [LICENSE](./LICENSE) pour les termes complets.
