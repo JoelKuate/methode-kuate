@@ -1,0 +1,21 @@
+{
+  "name": "@methode-kuate/agents-business",
+  "version": "1.0.0",
+  "description": "Agents Business & Stratégie — Méthode KUATE",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./templates": "./templates"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean"
+  },
+  "dependencies": {
+    "@methode-kuate/core": "*"
+  }
+}

@@ -4,6 +4,9 @@ import { detectSystemLang } from './utils/lang.js'
 import { initCommand } from './commands/init.js'
 import { agentListCommand, agentUseCommand, agentInfoCommand } from './commands/agent.js'
 import { configShowCommand } from './commands/config.js'
+import { workflowListCommand, workflowShowCommand } from './commands/workflow.js'
+import { memoryShowCommand, memoryAddCommand, memoryInjectCommand } from './commands/memory.js'
+import { buildCommand } from './commands/build.js'
 
 const VERSION = '1.0.0'
 const cwd = process.cwd()
@@ -45,5 +48,43 @@ configCmd
   .command('show')
   .description('Affiche la configuration courante')
   .action(() => configShowCommand(cwd))
+
+const workflowCmd = program.command('workflow').description('Gère les workflows par phase KUATE')
+
+workflowCmd
+  .command('list')
+  .description('Liste tous les workflows (filtrés par phase)')
+  .option('--phase <phase>', 'Filtrer par phase (K|U|A|T|E)')
+  .action((opts: { phase?: string }) => workflowListCommand(cwd, opts.phase))
+
+workflowCmd
+  .command('show <nom>')
+  .description("Affiche la fiche complète d'un workflow")
+  .action((nom: string) => workflowShowCommand(cwd, nom))
+
+const memoryCmd = program.command('memory').description('Gère la mémoire persistante du projet')
+
+memoryCmd
+  .command('show')
+  .description('Affiche la mémoire du projet')
+  .option('--section <nom>', 'Afficher une section spécifique')
+  .action((opts: { section?: string }) => memoryShowCommand(cwd, opts.section))
+
+memoryCmd
+  .command('add')
+  .description('Ajoute une entrée dans une section mémoire')
+  .requiredOption('--section <nom>', 'Section cible (memory|architecture|business|constraints|glossary)')
+  .action((opts: { section: string }) => memoryAddCommand(cwd, opts.section))
+
+memoryCmd
+  .command('inject')
+  .description('Génère un bloc contexte prêt à coller dans une session IA')
+  .action(() => memoryInjectCommand(cwd))
+
+program
+  .command('build')
+  .description('Exporte les agents pour une plateforme IA')
+  .requiredOption('--target <plateforme>', 'claude | chatgpt | gemini | cursor | copilot | pack')
+  .action((opts: { target: string }) => buildCommand(cwd, opts.target))
 
 program.parse(process.argv)
