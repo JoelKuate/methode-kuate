@@ -7,6 +7,8 @@ import { configShowCommand } from './commands/config.js'
 import { workflowListCommand, workflowShowCommand } from './commands/workflow.js'
 import { memoryShowCommand, memoryAddCommand, memoryInjectCommand } from './commands/memory.js'
 import { buildCommand } from './commands/build.js'
+import { doctorCommand } from './commands/doctor.js'
+import { conseilCommand } from './commands/conseil.js'
 
 const VERSION = '1.0.0'
 const cwd = process.cwd()
@@ -86,5 +88,20 @@ program
   .description('Exporte les agents pour une plateforme IA')
   .requiredOption('--target <plateforme>', 'claude | chatgpt | gemini | cursor | copilot | pack')
   .action((opts: { target: string }) => buildCommand(cwd, opts.target))
+
+program
+  .command('doctor')
+  .description('Vérifie l\'installation et la configuration KUATE')
+  .action(() => doctorCommand(cwd))
+
+program
+  .command('conseil')
+  .description('Mode multi-agents : plusieurs experts sur un sujet')
+  .requiredOption('--agents <noms>', 'Agents séparés par virgule (ex: architecte-solution,dev-senior)')
+  .requiredOption('--topic <texte>', 'Sujet de la session de conseil')
+  .option('--save', 'Sauvegarder la session dans .kuate/context/architecture.md', false)
+  .action((opts: { agents: string; topic: string; save: boolean }) =>
+    conseilCommand(cwd, opts.agents.split(',').map(s => s.trim()), opts.topic, opts.save)
+  )
 
 program.parse(process.argv)
